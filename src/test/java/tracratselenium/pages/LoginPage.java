@@ -5,34 +5,35 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 import tracratselenium.helpers.DriverHelper;
-import tracratselenium.stepdef.browserStepdefs;
+import tracratselenium.stepdef.BrowserStepDefs;
 
 public class LoginPage {
-	public DriverHelper driverHelper;
+	private DriverHelper driverHelper;
 
 	@FindBy(name = "username")
-	private WebElement usernameTestField;
+	private WebElement userNameTextField;
 
 	@FindBy(name = "password")
-	private WebElement PasswordTestField;
+
+	private WebElement passwordTextField;
 
 	@FindBy(xpath = "//button[normalize-space()='Login']")
-	private WebElement loginbutton;
+	private WebElement loginButton;
 
-	public LoginPage(browserStepdefs browserStepdefs) {
+	public LoginPage(BrowserStepDefs browserStepdefs) {
 
 		PageFactory.initElements(browserStepdefs.getDriver(), this);
 
 	}
 
-	public void enterusernameAndPassword(String username, String password) {
-		usernameTestField.sendKeys(username);
-		PasswordTestField.sendKeys(password);
+	public void enterUsernameAndPassword(String username, String password) {
+		userNameTextField.sendKeys(username);
+		passwordTextField.sendKeys(password);
 
 	}
 
-	public void click_on_loginbutton() {
-		loginbutton.click();
+	public void clickOnLoginButton() {
+		loginButton.click();
 
 	}
 

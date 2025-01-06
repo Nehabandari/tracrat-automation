@@ -5,12 +5,12 @@
   <suite started-at="2024-09-24T14:59:20 IST" name="Default suite" finished-at="2024-09-24T15:01:06 IST" duration-ms="105449">
     <groups>
       <group name="cucumber">
-        <method signature="AbstractTestNGCucumberTests.runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:tracratselenium.runner.Cucumberrunner@367ffa75]" name="runScenario" class="io.cucumber.testng.AbstractTestNGCucumberTests"/>
+        <method signature="AbstractTestNGCucumberTests.runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:tracratselenium.runner.CucumberRunner@367ffa75]" name="runScenario" class="io.cucumber.testng.AbstractTestNGCucumberTests"/>
       </group> <!-- cucumber -->
     </groups>
     <test started-at="2024-09-24T14:59:20 IST" name="Default test" finished-at="2024-09-24T15:01:06 IST" duration-ms="105449">
-      <class name="tracratselenium.runner.Cucumberrunner">
-        <test-method is-config="true" signature="setUpClass(org.testng.ITestContext)[pri:0, instance:tracratselenium.runner.Cucumberrunner@367ffa75]" started-at="2024-09-24T14:59:20 IST" name="setUpClass" finished-at="2024-09-24T14:59:22 IST" duration-ms="1664" status="PASS">
+      <class name="tracratselenium.runner.CucumberRunner">
+        <test-method is-config="true" signature="setUpClass(org.testng.ITestContext)[pri:0, instance:tracratselenium.runner.CucumberRunner@367ffa75]" started-at="2024-09-24T14:59:20 IST" name="setUpClass" finished-at="2024-09-24T14:59:22 IST" duration-ms="1664" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -21,7 +21,7 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUpClass -->
-        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:tracratselenium.runner.Cucumberrunner@367ffa75]" started-at="2024-09-24T14:59:22 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2024-09-24T15:01:06 IST" duration-ms="103388" status="FAIL">
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:tracratselenium.runner.CucumberRunner@367ffa75]" started-at="2024-09-24T14:59:22 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2024-09-24T15:01:06 IST" duration-ms="103388" status="FAIL">
           <params>
             <param index="0">
               <value>
@@ -55,7 +55,7 @@ at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:228)
 at tracratselenium.helpers.DriverHelper.waitForClickable(DriverHelper.java:32)
 at tracratselenium.helpers.DriverHelper.selectNgxDropdownOption(DriverHelper.java:60)
 at tracratselenium.pages.HomePage.selectCompany(HomePage.java:70)
-at tracratselenium.stepdef.HomePageStepdefs.WhenTheUserSelects(HomePageStepdefs.java:35)
+at tracratselenium.stepdef.HomePageStepDefs.WhenTheUserSelects(HomePageStepdefs.java:35)
 at ✽.I select the dropdown 'Select Company'(file:///F:/eclipse-workspace/tracratselenium/src/test/resources/features/Company.feature:9)
 ]]>
             </full-stacktrace>
@@ -63,11 +63,11 @@ at ✽.I select the dropdown 'Select Company'(file:///F:/eclipse-workspace/tracr
           <reporter-output>
           </reporter-output>
         </test-method> <!-- runScenario -->
-        <test-method is-config="true" signature="tearDownClass()[pri:0, instance:tracratselenium.runner.Cucumberrunner@367ffa75]" started-at="2024-09-24T15:01:06 IST" name="tearDownClass" finished-at="2024-09-24T15:01:06 IST" duration-ms="155" status="PASS">
+        <test-method is-config="true" signature="tearDownClass()[pri:0, instance:tracratselenium.runner.CucumberRunner@367ffa75]" started-at="2024-09-24T15:01:06 IST" name="tearDownClass" finished-at="2024-09-24T15:01:06 IST" duration-ms="155" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDownClass -->
-      </class> <!-- tracratselenium.runner.Cucumberrunner -->
+      </class> <!-- tracratselenium.runner.CucumberRunner -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

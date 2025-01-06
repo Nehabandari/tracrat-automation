@@ -19,7 +19,7 @@ at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:228)
 at tracratselenium.helpers.DriverHelper.waitForClickable(DriverHelper.java:32)
 at tracratselenium.helpers.DriverHelper.selectNgxDropdownOption(DriverHelper.java:60)
 at tracratselenium.pages.HomePage.selectCompany(HomePage.java:70)
-at tracratselenium.stepdef.HomePageStepdefs.WhenTheUserSelects(HomePageStepdefs.java:35)
+at tracratselenium.stepdef.HomePageStepDefs.WhenTheUserSelects(HomePageStepdefs.java:35)
 at ✽.I select the dropdown 'Select Company'(file:///F:/eclipse-workspace/tracratselenium/src/test/resources/features/Company.feature:9)
 ]]>
     </failure>

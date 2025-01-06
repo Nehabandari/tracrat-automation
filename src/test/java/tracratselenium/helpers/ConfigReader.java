@@ -1,6 +1,5 @@
 package tracratselenium.helpers;
 
-import java.io.FileInputStream;
 import java.io.InputStream;
 import java.util.Properties;
 
@@ -12,7 +11,6 @@ public class ConfigReader {
 		properties = new Properties();
 		try {
 			InputStream input = ConfigReader.class.getClassLoader().getResourceAsStream("config.properties");
-			//FileInputStream input = new FileInputStream("config.properties");
 			properties.load(input);
 			input.close();
 		}catch (Exception e) {
@@ -25,6 +23,14 @@ public class ConfigReader {
 			return System.getProperty(propertyName);
 		}else {
 			return properties.getProperty(propertyName);
+		}
+	}
+
+	public static Integer getWaitTimeOut() {
+		if(System.getProperty("waitTimeOut")!=null) {
+			return Integer.parseInt(System.getProperty("waitTimeOut"));
+		}else {
+			return Integer.parseInt(properties.getProperty("waitTimeOut"));
 		}
 	}
 
