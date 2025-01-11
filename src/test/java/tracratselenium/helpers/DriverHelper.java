@@ -116,7 +116,10 @@ public class DriverHelper {
         waitForVisible(webelement);
         click(webelement);
         pause(2000);
-        WebElement searchText = webelement.findElement(By.name("search-text"));
+        // new one trying
+        //WebElement searchText = webelement.findElement(By.name("search"));
+        //old
+       WebElement searchText = webelement.findElement(By.name("search-text"));
         waitForClickable(searchText);
         searchText.sendKeys(value);
         pause(1500);

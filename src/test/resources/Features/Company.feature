@@ -1,7 +1,7 @@
 Feature: Tracrat Automation
 
-@addCompany
-Scenario: Add a Company
+@companyCrud
+Scenario: Company CRUD operations automation
     Given the user name is "ypatel" and the password is "Ypatel@1234"
     When I click the login button
     Then the login should be successful

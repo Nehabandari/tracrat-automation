@@ -9,7 +9,7 @@ import tracratselenium.pojo.CompanyDetails;
 
 public class CompanyStepDefs {
 
-    private CompanyPage companyPage;
+    private final CompanyPage companyPage;
 
     public CompanyStepDefs(CompanyPage companyPage) {
         this.companyPage = companyPage;
@@ -44,6 +44,7 @@ public class CompanyStepDefs {
         details.setAddress(faker.address().streetAddress());
         details.setPhone(faker.phoneNumber().phoneNumberInternational());
         details.setCity(faker.address().city());
+        details.setState(faker.address().state());
         // ... set other  fields
         companyPage.fillAddCompanyDetails(details);
     }

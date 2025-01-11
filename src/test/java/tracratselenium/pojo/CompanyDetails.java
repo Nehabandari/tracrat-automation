@@ -11,6 +11,7 @@ public class CompanyDetails {
     private String address;
     private String phone;
     private String city;
+    private String state;
 
     public String getName() {
         return name;
@@ -41,5 +42,11 @@ public class CompanyDetails {
     }
     public void setCity(String city) {
         this.city = city;
+    }
+    public String getState() {
+        return state;
+    }
+    public void setState(String state) {
+        this.state = state;
     }
 }

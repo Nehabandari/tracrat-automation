@@ -20,6 +20,9 @@ public class HomePage {
 
 
     @FindBy(xpath = "//div[@title='click here to Manage Companies']/ngx-select-dropdown")
+    //div[normalize-space()='Select Company']
+    // fixing this
+  //  @FindBy(xpath = "//button[normalize-space()='Select Company']")
     private WebElement selectCompanyDropdown;
 
 

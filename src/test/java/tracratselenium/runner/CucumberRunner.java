@@ -6,9 +6,10 @@ import org.testng.annotations.DataProvider;
 
 @CucumberOptions(
         features = "src/test/resources/features/",
-        tags = "@addCompany",
+        tags = "@companyCrud",
         glue = "tracratselenium.stepdef",
         plugin = "html:target/cucumber.html")
+
 
 
 public class CucumberRunner extends AbstractTestNGCucumberTests {

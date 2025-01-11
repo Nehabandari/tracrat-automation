@@ -13,13 +13,13 @@ import tracratselenium.pojo.CompanyDetails;
 public class CompanyPage {
 
     private WebDriver webDriver;
-    private By ngxloader = By.xpath("//ngx-spinner/div");
+    private By ngxLoader = By.xpath("//ngx-spinner/div");
 
     @FindBy(linkText = "Manage Companies")
     private WebElement manageCompaniesLink;
 
     @FindBy(xpath = "//p[@class='card-text']")
-    private WebElement manageCompanyHeader;
+    private WebElement manageCompaniesHeader;
 
     @FindBy(xpath = "//button[@title='Add a new Company.']")
     private WebElement addCompanyButton;
@@ -28,16 +28,19 @@ public class CompanyPage {
     private WebElement companyFormHeader;
 
     @FindBy(css = "input[name='name']")
-    private WebElement companyNameInput;
+    private WebElement companyNameTextField;
 
     @FindBy(css = "input[name='address1']")
-    private WebElement addressInput;
+    private WebElement addressTextField;
 
     @FindBy(css = "input[name='phone']")
-    private WebElement phoneInput;
+    private WebElement phoneTextField;
 
     @FindBy(id = "city")
     private WebElement cityTextField;
+
+    @FindBy(id = "state")
+    private WebElement stateTextField;
 
     @FindBy(xpath = "//button[@title='Save Company']")
     private WebElement saveButton;
@@ -59,8 +62,8 @@ public class CompanyPage {
 
 
     public void waitForManageCompanyHeader() {
-        driverHelper.waitForVisible(manageCompanyHeader);
-        Assert.assertTrue(manageCompanyHeader.getText().contains("Manage Companies"), "Manage Companies page didnt load");
+        driverHelper.waitForVisible(manageCompaniesHeader);
+        Assert.assertTrue(manageCompaniesHeader.getText().contains("Manage Companies"), "Manage Companies page didnt load");
     }
 
     public void clickAddCompanyButton() {
@@ -74,12 +77,13 @@ public class CompanyPage {
     }
 
     public void fillAddCompanyDetails(CompanyDetails details) {
-        driverHelper.waitForVisible(companyNameInput);
+        driverHelper.waitForVisible(companyNameTextField);
         companyName = details.getName();
-        companyNameInput.sendKeys(companyName);
-        addressInput.sendKeys(details.getAddress());
-        phoneInput.sendKeys(details.getPhone());
+        companyNameTextField.sendKeys(companyName);
+        addressTextField.sendKeys(details.getAddress());
+        phoneTextField.sendKeys(details.getPhone());
         cityTextField.sendKeys(details.getCity());
+        stateTextField.sendKeys(details.getState());
         // Fill other fields
     }
 
@@ -97,7 +101,7 @@ public class CompanyPage {
         driverHelper.waitForAlert();
         driverHelper.assertAlert("Company successfully Added,Refreshing List");
         driverHelper.chooseOk();
-        driverHelper.waitForElementNotPresent(ngxloader);
+        driverHelper.waitForElementNotPresent(ngxLoader);
         driverHelper.waitForPageLoad();
     }
 

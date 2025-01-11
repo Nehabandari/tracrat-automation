@@ -60,14 +60,14 @@
 			  <groupId>org.projectlombok</groupId>
 			  <artifactId>lombok</artifactId>
 			  <version>1.18.36</version>
-			  <scope>provided</scope>
+			  <scope>test</scope>
 		  </dependency>
 
 		  <dependency>
 			  <groupId>org.slf4j</groupId>
 			  <artifactId>slf4j-simple</artifactId>
 			  <version>2.0.16</version>
-			  <scope>test</scope>
+			  <scope>runtime</scope>
 		  </dependency>
 
 
