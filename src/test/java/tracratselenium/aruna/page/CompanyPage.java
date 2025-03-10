@@ -14,6 +14,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import tracratselenium.aruna.helpers.DriverHelper;
 
+import java.nio.file.Paths;
 import java.time.Duration;
 
 public class CompanyPage {
@@ -59,6 +60,9 @@ public class CompanyPage {
 
     @FindBy(id="desc")
     WebElement descriptionTextField;
+
+    @FindBy(id="logo")
+    WebElement logoFileUploadField;
 
     @FindBy(id="conatctName")
     WebElement primaryContactNameTextField;
@@ -143,6 +147,8 @@ public class CompanyPage {
         stateTextField.sendKeys(faker.address().state());
         postalCodeTextField.sendKeys(faker.address().postcode());
         descriptionTextField.sendKeys(faker.company().catchPhrase());
+        String imageFile = Paths.get("images/icons8-google-logo-128.png").toAbsolutePath().toString();
+        logoFileUploadField.sendKeys(imageFile);
         primaryContactNameTextField.sendKeys(faker.artist().name());
         companyAnnouncementsTextField.sendKeys(RandomStringUtils.randomAlphanumeric(30));
         Thread.sleep(5000);
