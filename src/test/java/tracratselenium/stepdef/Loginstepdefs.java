@@ -11,6 +11,7 @@ public class LoginStepDefs {
         this.loginpage = loginpage;
     }
 
+    /*
     @Given("the user name is {string} and the password is {string}")
     public void login(String username, String password) {
         loginpage.enterUsernameAndPassword(username, password);
@@ -20,6 +21,17 @@ public class LoginStepDefs {
     @When("I click the login button")
     public void click_on_login_button() {
         loginpage.clickOnLoginButton();
+
+    }
+    */
+
+    @Given("the user name is {string} and the password is {string}")
+    public void userDetails(String username, String password){
+
+    }
+
+    @When("I click the login button")
+    public void click_the_login_button(){
 
     }
 }
