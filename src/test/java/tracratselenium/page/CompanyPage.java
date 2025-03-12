@@ -6,12 +6,14 @@ import org.openqa.selenium.Alert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import tracratselenium.helpers.DriverHelper;
+import tracratselenium.pojo.CompanyDataDetails;
 
 import java.nio.file.Paths;
 import java.time.Duration;
@@ -66,7 +68,11 @@ public class CompanyPage {
     @FindBy(id="conatctName")
     WebElement primaryContactNameTextField;
 
-    @FindBy(id = "companyAnnouncement")
+
+    @FindAll({
+            @FindBy(id = "companyAnnouncement"),
+            @FindBy(id = "companyAnnouncements")
+    })
     WebElement companyAnnouncementsTextField;
 
     @FindBy(xpath = "//button[@title='Save Company']")
@@ -89,21 +95,14 @@ public class CompanyPage {
 
     private DriverHelper driverHelper;
 
-    private String companyName;
+    private CompanyDataDetails companyDataDetails;
 
-       public CompanyPage(DriverHelper dh){
+
+    public CompanyPage(DriverHelper dh, CompanyDataDetails companyDataDetails){
         PageFactory.initElements(dh.getDriver(), this);
         wdriver = dh.getDriver();
         driverHelper = dh;
-    }
-
-    public void setCompanyName(String compName){
-        companyName = compName;
-    }
-
-
-    public String getCompanyName(){
-        return companyName;
+        this.companyDataDetails = companyDataDetails;
     }
 
     public void waitforddcompanybutton(){
@@ -134,22 +133,34 @@ public class CompanyPage {
         //String companyData = RandomStringUtils.randomAlphabetic(5);
 
         Faker faker = new Faker();
-        companyName = "au_"+RandomStringUtils.randomNumeric(3)+faker.company().name();
-        companyNameTextField.sendKeys(companyName);
-        System.out.println(companyName);
-        urlTextField.sendKeys((faker.company().url()));
-        phonenumberTextField.sendKeys(faker.phoneNumber().subscriberNumber());
-        faxTextField.sendKeys(faker.phoneNumber().phoneNumber());
-        addressLine1TextField.sendKeys(faker.address().streetAddress());
-        addressLine2TextField.sendKeys(faker.address().secondaryAddress());
-        cityTextField.sendKeys(faker.address().cityName());
-        stateTextField.sendKeys(faker.address().state());
-        postalCodeTextField.sendKeys(faker.address().postcode());
-        descriptionTextField.sendKeys(faker.company().catchPhrase());
+        companyDataDetails.setName("au_"+RandomStringUtils.randomNumeric(3)+faker.company().name());
+        companyDataDetails.setUrl(faker.company().url());
+        companyDataDetails.setPhone(faker.phoneNumber().subscriberNumber());
+        companyDataDetails.setFax(faker.phoneNumber().phoneNumber());
+        companyDataDetails.setAddress1(faker.address().streetAddress());
+        companyDataDetails.setAddress2(faker.address().secondaryAddress());
+        companyDataDetails.setCity(faker.address().cityName());
+        companyDataDetails.setState(faker.address().state());
+        companyDataDetails.setPostalCode(faker.address().postcode());
+        companyDataDetails.setDescription(faker.company().catchPhrase());
+        companyDataDetails.setPrimaryContactName(faker.artist().name());
+        companyDataDetails.setCompanyAnnouncements(RandomStringUtils.randomAlphanumeric(30));
+
+        companyNameTextField.sendKeys(companyDataDetails.getName());
+        System.out.println(companyDataDetails.getName());
+        urlTextField.sendKeys(companyDataDetails.getUrl());
+        phonenumberTextField.sendKeys(companyDataDetails.getPhone());
+        faxTextField.sendKeys(companyDataDetails.getFax());
+        addressLine1TextField.sendKeys(companyDataDetails.getAddress1());
+        addressLine2TextField.sendKeys(companyDataDetails.getAddress2());
+        cityTextField.sendKeys(companyDataDetails.getCity());
+        stateTextField.sendKeys(companyDataDetails.getState());
+        postalCodeTextField.sendKeys(companyDataDetails.getPostalCode());
+        descriptionTextField.sendKeys(companyDataDetails.getDescription());
         String imageFile = Paths.get("images/icons8-google-logo-128.png").toAbsolutePath().toString();
         logoFileUploadField.sendKeys(imageFile);
-        primaryContactNameTextField.sendKeys(faker.artist().name());
-        companyAnnouncementsTextField.sendKeys(RandomStringUtils.randomAlphanumeric(30));
+        primaryContactNameTextField.sendKeys(companyDataDetails.getPrimaryContactName());
+        companyAnnouncementsTextField.sendKeys(companyDataDetails.getCompanyAnnouncements());
         Thread.sleep(5000);
 
     }
@@ -181,21 +192,37 @@ public class CompanyPage {
 
         driverHelper.waitForVisible(searchcompanyName);
 
-        searchcompanyName.sendKeys(companyName);
+        searchcompanyName.sendKeys(companyDataDetails.getName());
     }
 
     public void verifyingcompanynameFromTheccompanyList(){
 
            new Actions(wdriver, Duration.ofSeconds(20)).pause(Duration.ofSeconds(2)).perform();
-           Assert.assertEquals(companyInTheTable.getText(),companyName);
+           Assert.assertEquals(companyInTheTable.getText(),companyDataDetails.getName());
     }
 
     public void clickOnEditButton(){
-           editButton.click();
+        editButton.click();
     }
 
     public void verifyingCompanyDetailsPage(){
-           driverHelper.waitForVisible(companyHeaderInTheDetailsPage);
-           Assert.assertEquals(companyNameTextField.getAttribute("value"), companyName);
+        driverHelper.waitForPageLoad();
+        driverHelper.waitForVisible(companyHeaderInTheDetailsPage);
+        Assert.assertEquals(companyNameTextField.getAttribute("value"), companyDataDetails.getName());
+    }
+
+    public void verifyCreatedCompanydetails(){
+        Assert.assertEquals(companyNameTextField.getAttribute("value"), companyDataDetails.getName());
+        Assert.assertEquals(urlTextField.getAttribute("value"), companyDataDetails.getUrl());
+        Assert.assertEquals(phonenumberTextField.getAttribute("value"), companyDataDetails.getPhone());
+        Assert.assertEquals(faxTextField.getAttribute("value"), companyDataDetails.getFax());
+        Assert.assertEquals(addressLine1TextField.getAttribute("value"), companyDataDetails.getAddress1());
+        Assert.assertEquals(addressLine2TextField.getAttribute("value"), companyDataDetails.getAddress2());
+        Assert.assertEquals(cityTextField.getAttribute("value"), companyDataDetails.getCity());
+        Assert.assertEquals(stateTextField.getAttribute("value"), companyDataDetails.getState());
+        Assert.assertEquals(postalCodeTextField.getAttribute("value"), companyDataDetails.getPostalCode());
+        Assert.assertEquals(descriptionTextField.getAttribute("value"), companyDataDetails.getDescription());
+        Assert.assertEquals(companyAnnouncementsTextField.getAttribute("value"), companyDataDetails.getCompanyAnnouncements());
+
     }
 }

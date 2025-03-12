@@ -6,16 +6,17 @@ import io.cucumber.java.en.When;
 import tracratselenium.helpers.DriverHelper;
 import tracratselenium.page.CompanyPage;
 import tracratselenium.page.HomePage;
+import tracratselenium.pojo.CompanyDataDetails;
 
 public class HomePageStepDefs {
 
-    HomePage homepage ;
-    CompanyPage companypage;
+    private HomePage homepage ;
+    private CompanyDataDetails companyDataDetails;
 
-    public HomePageStepDefs(DriverHelper driverHelper, HomePage hp, CompanyPage cp) {
+    public HomePageStepDefs(DriverHelper driverHelper, HomePage hp, CompanyDataDetails companyDataDetails) {
 
         homepage = hp;
-        companypage = cp;
+        this.companyDataDetails = companyDataDetails;
 
     }
 
@@ -41,7 +42,7 @@ public class HomePageStepDefs {
     @When("i select the created company from navigation bar")
     public void select_the_created_company_from_navigation_bar()throws Exception{
 
-        homepage.selectingCompany(companypage.getCompanyName());
+        homepage.selectingCompany(companyDataDetails.getName());
     }
 
 }

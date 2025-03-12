@@ -9,15 +9,16 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import tracratselenium.helpers.DriverHelper;
+import tracratselenium.pojo.CompanyDataDetails;
 
 import java.time.Duration;
 import java.util.List;
 
 public class HomePage {
 
-    WebDriver webdriver;
+    private WebDriver webdriver;
 
-    CompanyPage cp;
+    private CompanyDataDetails companyDataDetails;
 
     private By ngxLoader = By.xpath("//ngx-spinner/div");
     private By homepagelink = By.linkText("Home");
@@ -44,10 +45,10 @@ public class HomePage {
     WebElement managecompanieslink;
 
 
-    public HomePage(DriverHelper driverHelper, CompanyPage companyPage){
+    public HomePage(DriverHelper driverHelper, CompanyPage companyPage, CompanyDataDetails companyDataDetails){
         webdriver = driverHelper.getDriver();
         PageFactory.initElements(driverHelper.getDriver(), this);
-        cp = companyPage;
+        this.companyDataDetails = companyDataDetails;
     }
 
         public void checkhomelinkisdisplayed(){
@@ -69,7 +70,7 @@ public class HomePage {
         for(WebElement eachcompany:companieslist){
 
             if(companyname.equals(eachcompany.getText())) {
-                cp.setCompanyName(companyname);
+                companyDataDetails.setName(companyname);
                 eachcompany.click();
 
                 iscompanyclicked = true;
@@ -89,7 +90,7 @@ public class HomePage {
 
         Assert.assertTrue(verifyingcompany.isDisplayed());
         String compaName = verifyingcompany.getText();
-        if(!compaName.contains(cp.getCompanyName())){
+        if(!compaName.contains(companyDataDetails.getName())){
             Assert.fail();
         }
         

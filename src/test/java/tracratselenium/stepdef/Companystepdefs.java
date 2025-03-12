@@ -1,4 +1,4 @@
-package tracratselenium.aruna.stepdef;
+package tracratselenium.stepdef;
 
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -76,5 +76,10 @@ public class Companystepdefs {
     @Then("company details page should be loaded")
     public void company_details_page_should_be_loaded(){
         companyPage.verifyingCompanyDetailsPage();
+    }
+
+    @Then("verify the company details saved")
+    public void verify_the_company_detail_saved(){
+        companyPage.verifyCreatedCompanydetails();
     }
 }
