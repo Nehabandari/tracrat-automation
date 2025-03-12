@@ -1,11 +1,11 @@
-package tracratselenium.aruna.stepdef;
+package tracratselenium.stepdef;
 
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import tracratselenium.aruna.helpers.DriverHelper;
-import tracratselenium.aruna.page.CompanyPage;
-import tracratselenium.aruna.page.HomePage;
+import tracratselenium.helpers.DriverHelper;
+import tracratselenium.page.CompanyPage;
+import tracratselenium.page.HomePage;
 
 public class HomePageStepDefs {
 

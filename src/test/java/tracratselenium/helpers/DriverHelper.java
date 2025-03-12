@@ -1,4 +1,4 @@
-package tracratselenium.aruna.helpers;
+package tracratselenium.helpers;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;

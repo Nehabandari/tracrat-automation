@@ -1,4 +1,4 @@
-package tracratselenium.aruna.stepdef;
+package tracratselenium.stepdef;
 
 import io.cucumber.java.After;
 import io.cucumber.java.Before;

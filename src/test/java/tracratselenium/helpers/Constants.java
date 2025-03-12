@@ -1,4 +1,4 @@
-package tracratselenium.aruna.helpers;
+package tracratselenium.helpers;
 
 public class Constants {
 

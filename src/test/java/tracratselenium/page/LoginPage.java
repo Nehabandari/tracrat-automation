@@ -1,10 +1,9 @@
-package tracratselenium.aruna.page;
+package tracratselenium.page;
 
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import tracratselenium.aruna.helpers.DriverHelper;
+import tracratselenium.helpers.DriverHelper;
 
 public class LoginPage {
 

@@ -1,9 +1,8 @@
-package tracratselenium.aruna.page;
+package tracratselenium.page;
 
 import net.datafaker.Faker;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.openqa.selenium.Alert;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -12,7 +11,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
-import tracratselenium.aruna.helpers.DriverHelper;
+import tracratselenium.helpers.DriverHelper;
 
 import java.nio.file.Paths;
 import java.time.Duration;
