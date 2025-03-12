@@ -6,8 +6,6 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import tracratselenium.aruna.stepdef.Hooks;
-import tracratselenium.helpers.ConfigReader;
-import tracratselenium.stepdef.BrowserStepDefs;
 
 import java.time.Duration;
 import java.util.List;

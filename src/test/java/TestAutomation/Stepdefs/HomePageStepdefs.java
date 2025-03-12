@@ -1,10 +1,9 @@
-package tracratselenium.newstepdefs;
+package TestAutomation.Stepdefs;
 
-import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
-public class HomePageSteps {
+public class HomePageStepdefs {
 
     @Then("the login should be successful")
     public void the_login_should_be_successful() {
@@ -20,6 +19,4 @@ public class HomePageSteps {
     public void verify_the_selected_company_should_be_loaded(){
 
     }
-
-
 }

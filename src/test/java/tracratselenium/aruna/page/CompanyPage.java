@@ -135,7 +135,7 @@ public class CompanyPage {
         //String companyData = RandomStringUtils.randomAlphabetic(5);
 
         Faker faker = new Faker();
-        companyName = faker.company().name();
+        companyName = "au_"+RandomStringUtils.randomNumeric(3)+faker.company().name();
         companyNameTextField.sendKeys(companyName);
         System.out.println(companyName);
         urlTextField.sendKeys((faker.company().url()));

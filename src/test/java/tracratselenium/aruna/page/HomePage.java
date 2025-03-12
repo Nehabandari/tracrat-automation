@@ -50,7 +50,7 @@ public class HomePage {
         cp = companyPage;
     }
 
-    public void checkhomelinkisdisplayed(){
+        public void checkhomelinkisdisplayed(){
         WebElement homepg = webdriver.findElement(homepagelink);
         Assert.assertTrue(homepg.isDisplayed());
     }
