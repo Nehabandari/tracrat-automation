@@ -1,4 +1,4 @@
-package TestAutomation.Stepdefs;
+package testautomation.stepdefs;
 
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;

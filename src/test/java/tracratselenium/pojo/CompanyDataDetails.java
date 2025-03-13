@@ -18,6 +18,7 @@ public class CompanyDataDetails {
     private String postalCode;
     private String description;
     private String primaryContactName;
+    private String tracratAnnouncements;
     private String companyAnnouncements;
 
     public String getName() {
@@ -89,7 +90,7 @@ public class CompanyDataDetails {
     }
 
     public void setPostalCode(String postalCode) {
-        this.postalCode = postalCode;
+        this.postalCode = String.valueOf(Integer.parseInt(postalCode));
     }
 
     public String getDescription() {
@@ -106,6 +107,14 @@ public class CompanyDataDetails {
 
     public void setPrimaryContactName(String primaryContactName) {
         this.primaryContactName = primaryContactName;
+    }
+
+    public String getTracratAnnouncements() {
+        return tracratAnnouncements;
+    }
+
+    public void setTracratAnnouncements(String tracratAnnouncements) {
+        this.tracratAnnouncements = tracratAnnouncements;
     }
 
     public String getCompanyAnnouncements() {

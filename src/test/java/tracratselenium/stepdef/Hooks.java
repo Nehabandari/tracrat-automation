@@ -7,8 +7,11 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 
 import java.time.Duration;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Hooks {
 
@@ -20,8 +23,13 @@ public class Hooks {
     @Before
     public void beforeScenario(){
         System.out.println("I am in before scenario");
-        wd = new ChromeDriver();
-        wd.manage().window().maximize();
+        ChromeOptions chromeOptions = new ChromeOptions();
+        chromeOptions.addArguments("disable-infobars","start-maximized","--disable-extensions");
+        Map<String, Object> prefs = new HashMap<>();
+        prefs.put("autofill.profile_enabled",false);
+        chromeOptions.setExperimentalOption("prefs", prefs);
+        wd = new ChromeDriver(chromeOptions);
+        //wd.manage().window().maximize();
         wd.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(60));
         wd.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
         wd.get("https://angular15.gotracrat.in/#/login");

@@ -1,4 +1,4 @@
-package TestAutomation.Helpers;
+package testautomation.helpers;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;

@@ -87,8 +87,23 @@ public class CompanyPage {
     @FindBy(xpath ="//button[@title='Edit this Company']")
     WebElement editButton;
 
+    @FindBy(xpath ="//button[@title='Delete this Company']")
+    WebElement deleteButton;
+
     @FindBy(xpath = "//div[@class='card-header']/strong")
     WebElement companyHeaderInTheDetailsPage;
+
+    @FindBy(id = "tracratAnnouncement")
+    WebElement tracratAnnouncementsTextField;
+
+    @FindBy(xpath = "//button[@title='Update this Company']")
+    WebElement updatebutton;
+
+    @FindBy(xpath = "//div[@class='modal-content']")
+    WebElement deleteConfirmationPopup;
+
+    @FindBy(xpath = "//div[@class='modal-content']/div/button")
+    WebElement yesButtonInPopup;
 
 
     WebDriver wdriver;
@@ -97,8 +112,7 @@ public class CompanyPage {
 
     private CompanyDataDetails companyDataDetails;
 
-
-    public CompanyPage(DriverHelper dh, CompanyDataDetails companyDataDetails){
+        public CompanyPage(DriverHelper dh, CompanyDataDetails companyDataDetails){
         PageFactory.initElements(dh.getDriver(), this);
         wdriver = dh.getDriver();
         driverHelper = dh;
@@ -144,6 +158,7 @@ public class CompanyPage {
         companyDataDetails.setPostalCode(faker.address().postcode());
         companyDataDetails.setDescription(faker.company().catchPhrase());
         companyDataDetails.setPrimaryContactName(faker.artist().name());
+        companyDataDetails.setTracratAnnouncements("Tracrat Announcements");
         companyDataDetails.setCompanyAnnouncements(RandomStringUtils.randomAlphanumeric(30));
 
         companyNameTextField.sendKeys(companyDataDetails.getName());
@@ -188,6 +203,24 @@ public class CompanyPage {
         alert.accept();
     }
 
+    public void verifyingcompanyupdatedsuccessmessage(){
+        new WebDriverWait(wdriver,Duration.ofSeconds(60)).until(ExpectedConditions.alertIsPresent());
+        Alert alert = wdriver.switchTo().alert();
+        //Store the alert text in a variable and verify it
+        String text = alert.getText();
+        Assert.assertEquals(text, "Company updated successfully,Refreshing List");
+        alert.accept();
+    }
+
+    public void verifyingcompanydeletesuccessmessage(){
+        new WebDriverWait(wdriver,Duration.ofSeconds(60)).until(ExpectedConditions.alertIsPresent());
+        Alert alert = wdriver.switchTo().alert();
+        //Store the alert text in a variable and verify it
+        String text = alert.getText();
+        Assert.assertEquals(text, "Company successfully deleted,Refreshing List");
+        alert.accept();
+    }
+
     public void searchingForCompanyName(){
 
         driverHelper.waitForVisible(searchcompanyName);
@@ -222,7 +255,85 @@ public class CompanyPage {
         Assert.assertEquals(stateTextField.getAttribute("value"), companyDataDetails.getState());
         Assert.assertEquals(postalCodeTextField.getAttribute("value"), companyDataDetails.getPostalCode());
         Assert.assertEquals(descriptionTextField.getAttribute("value"), companyDataDetails.getDescription());
+        //Assert.assertEquals(tracratAnnouncementsTextField.getAttribute("value"), companyDataDetails.getTracratAnnouncements());
         Assert.assertEquals(companyAnnouncementsTextField.getAttribute("value"), companyDataDetails.getCompanyAnnouncements());
 
     }
+
+
+    public void changeCompanyData() throws Exception {
+        //String companyData = RandomStringUtils.randomAlphabetic(5);
+
+        Faker faker = new Faker();
+        companyDataDetails.setName("au_" + RandomStringUtils.randomNumeric(3) + faker.company().name());
+        companyDataDetails.setUrl(faker.company().url());
+        companyDataDetails.setPhone(faker.phoneNumber().subscriberNumber());
+        companyDataDetails.setFax(faker.phoneNumber().phoneNumber());
+        companyDataDetails.setAddress1(faker.address().streetAddress());
+        companyDataDetails.setAddress2(faker.address().secondaryAddress());
+        companyDataDetails.setCity(faker.address().cityName());
+        companyDataDetails.setState(faker.address().state());
+        companyDataDetails.setPostalCode(faker.address().postcode());
+        companyDataDetails.setDescription(faker.company().catchPhrase());
+        companyDataDetails.setTracratAnnouncements(RandomStringUtils.randomAlphanumeric(50));
+        companyDataDetails.setCompanyAnnouncements(RandomStringUtils.randomAlphanumeric(30));
+
+        companyNameTextField.clear();
+        companyNameTextField.sendKeys(companyDataDetails.getName());
+        System.out.println(companyDataDetails.getName());
+
+        urlTextField.clear();
+        urlTextField.sendKeys(companyDataDetails.getUrl());
+
+        phonenumberTextField.clear();
+        phonenumberTextField.sendKeys(companyDataDetails.getPhone());
+
+        faxTextField.clear();
+        faxTextField.sendKeys(companyDataDetails.getFax());
+
+        addressLine1TextField.clear();
+        addressLine1TextField.sendKeys(companyDataDetails.getAddress1());
+
+        addressLine2TextField.clear();
+        addressLine2TextField.sendKeys(companyDataDetails.getAddress2());
+
+        cityTextField.clear();
+        cityTextField.sendKeys(companyDataDetails.getCity());
+
+        stateTextField.clear();
+        stateTextField.sendKeys(companyDataDetails.getState());
+
+        postalCodeTextField.clear();
+        postalCodeTextField.sendKeys(companyDataDetails.getPostalCode());
+
+        descriptionTextField.clear();
+        descriptionTextField.sendKeys(companyDataDetails.getDescription());
+
+        String imageFile = Paths.get("images/Apple_logo_PNG7.png").toAbsolutePath().toString();
+        logoFileUploadField.sendKeys(imageFile);
+
+        tracratAnnouncementsTextField.clear();
+        tracratAnnouncementsTextField.sendKeys(companyDataDetails.getTracratAnnouncements());
+
+        companyAnnouncementsTextField.clear();
+        companyAnnouncementsTextField.sendKeys(companyDataDetails.getCompanyAnnouncements());
+        Thread.sleep(3000);
+    }
+
+    public void clickOnUpdateButton(){
+        updatebutton.click();
+    }
+
+    public void clickOnDeleteButton(){
+        deleteButton.click();
+    }
+
+    public void waitForDeletePopup(){
+            driverHelper.waitForVisible(deleteConfirmationPopup);
+    }
+
+    public void clickYesInPopup(){
+            yesButtonInPopup.clear();
+    }
+
 }

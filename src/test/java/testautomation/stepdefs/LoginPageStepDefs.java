@@ -1,8 +1,7 @@
-package TestAutomation.Stepdefs;
+package testautomation.stepdefs;
 
-import TestAutomation.pages.HomePage;
+import testautomation.pages.HomePage;
 import io.cucumber.java.en.Given;
-import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 public class LoginPageStepDefs {

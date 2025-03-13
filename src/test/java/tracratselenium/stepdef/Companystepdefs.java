@@ -1,5 +1,6 @@
 package tracratselenium.stepdef;
 
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -82,4 +83,36 @@ public class Companystepdefs {
     public void verify_the_company_detail_saved(){
         companyPage.verifyCreatedCompanydetails();
     }
+
+    @Given("i change the company details")
+    public void change_the_company_details()throws Exception{
+        companyPage.changeCompanyData();
+
+    }
+
+    @And("i click the update button")
+    public void click_the_update_button(){
+        companyPage.clickOnUpdateButton();
+    }
+
+    @Then("company should be updated succesfully")
+    public void company_should_be_updated(){
+        companyPage.verifyingcompanyupdatedsuccessmessage();
+    }
+
+    @When("i click on Delete button")
+    public void i_click_on_Delete_button(){
+        companyPage.clickOnDeleteButton();
+    }
+
+    @Then("verify delete confirmation popup is visible")
+    public void verify_delete_confirmation_popup_is_visible(){
+        companyPage.waitForDeletePopup();
+    }
+
+    @When("i click on yes in popup")
+    public void i_click_on_yes_in_popup(){
+        companyPage.clickYesInPopup();
+    }
+
 }
