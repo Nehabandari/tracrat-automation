@@ -1,22 +1,21 @@
 package tracratselenium.helpers;
 
-import java.time.Duration;
-import java.util.List;
-
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+import tracratselenium.stepdef.Hooks;
 
-import tracratselenium.stepdef.BrowserStepDefs;
+import java.time.Duration;
+import java.util.List;
 
 public class DriverHelper {
 
     private WebDriver webDriver;
 
-    public DriverHelper(BrowserStepDefs browserstepdefs) {
-        webDriver = browserstepdefs.getDriver();
+    public DriverHelper(Hooks hooks) {
+        webDriver = hooks.getDriver();
     }
 
     public WebDriver getDriver() {

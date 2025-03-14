@@ -1,46 +1,53 @@
 package tracratselenium.stepdef;
 
-import io.cucumber.java.Scenario;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import tracratselenium.helpers.Constants;
 import tracratselenium.helpers.DriverHelper;
-import tracratselenium.pages.CompanyPage;
-import tracratselenium.pages.HomePage;
+import tracratselenium.page.CompanyPage;
+import tracratselenium.page.HomePage;
+import tracratselenium.pojo.CompanyDataDetails;
 
 public class HomePageStepDefs {
 
-    private HomePage homePage;
-    private CompanyPage companyPage;
-    private BrowserStepDefs browserStepdefs;
-    private DriverHelper driverHelper;
+    private HomePage homepage ;
+    private CompanyDataDetails companyDataDetails;
 
-    public HomePageStepDefs(HomePage homePage, CompanyPage companyPage, BrowserStepDefs browserStepdefs, DriverHelper driverHelper) {
-        this.homePage = homePage;
-        this.companyPage = companyPage;
-        this.browserStepdefs = browserStepdefs;
-        this.driverHelper = driverHelper;
+    public HomePageStepDefs(DriverHelper driverHelper, HomePage hp, CompanyDataDetails companyDataDetails) {
+
+        homepage = hp;
+        this.companyDataDetails = companyDataDetails;
+
     }
 
-    @Then("the login should be successful")
-    public void the_login_should_be_successful() {
-        homePage.waitForCurrentRoleHeader();
-    }
 
     @When("i select the company {string} from navigation bar")
-    public void i_select_the_company_from_navigation_bar(String companyName) {
-        homePage.selectCompany(companyName);
+    public void select_the_company (String companyname) throws Exception{
+        homepage.selectingCompany(companyname);
     }
 
     @Then("verify the selected company should be loaded")
-    public void verify_the_selected_company_should_be_loaded() {
-        homePage.verifySelectedCompany();
-        Scenario scenario = browserStepdefs.getScenario();
-        scenario.attach(driverHelper.takeScreenshotAndReturnBytes(), Constants.IMAGE_JPEG, scenario.getId());
+    public void verify_the_selected_company(){
+        homepage.verifyselectedcompanyloaded();
+
+    }
+
+    @When("i click on company expand")
+    public void i_click_on_company_expand(){
+        homepage.clickOnCompanymenu();
+    }
+
+
+    @And("i click on manage company")
+    public void click_on_manage_company(){
+        homepage.clickManagecompanieslinkabc();
+
     }
 
     @When("i select the created company from navigation bar")
-    public void i_select_the_created_company_from_navigation_bar() {
-        homePage.selectCompany(companyPage.getCompanyName());
+    public void select_the_created_company_from_navigation_bar()throws Exception{
+
+        homepage.selectingCompany(companyDataDetails.getName());
     }
+
 }
