@@ -216,9 +216,10 @@ public class CompanyPage {
         new WebDriverWait(wdriver,Duration.ofSeconds(60)).until(ExpectedConditions.alertIsPresent());
         Alert alert = wdriver.switchTo().alert();
         //Store the alert text in a variable and verify it
-        String text = alert.getText();
+        String text = alert.getText().trim();
         Assert.assertEquals(text, "Company successfully deleted,Refreshing List");
         alert.accept();
+        new Actions(wdriver).pause(Duration.ofSeconds(3)).perform();
     }
 
     public void searchingForCompanyName(){
@@ -333,7 +334,7 @@ public class CompanyPage {
     }
 
     public void clickYesInPopup(){
-            yesButtonInPopup.clear();
+            yesButtonInPopup.click();
     }
 
 }

@@ -36,8 +36,7 @@ Feature: Tracrat Automation
         When i click on Edit button
         Then company details page should be loaded
         And verify the company details saved
-        When i select the created company from navigation bar
-        Then verify that selected company should be loaded
+        When i click on company expand
         And i click on manage company
         Then verify Manage Company page should be open
         When search for the company name
@@ -45,11 +44,7 @@ Feature: Tracrat Automation
         When i click on Delete button
         Then verify delete confirmation popup is visible
         When i click on yes in popup
-    #And i click on manage company
-    #Then verify Manage Company page should be open
-    #When i click on Delete button
-    #When i change the company Name, Phone, City & State
-    # Then verify that deleted Company should not be available in companylist
+        Then company should be deleted succesfully
 
 
     Scenario: delete company

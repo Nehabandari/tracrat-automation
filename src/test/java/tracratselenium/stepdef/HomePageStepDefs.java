@@ -32,6 +32,11 @@ public class HomePageStepDefs {
 
     }
 
+    @When("i click on company expand")
+    public void i_click_on_company_expand(){
+        homepage.clickOnCompanymenu();
+    }
+
 
     @And("i click on manage company")
     public void click_on_manage_company(){

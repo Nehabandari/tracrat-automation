@@ -100,6 +100,11 @@ public class Companystepdefs {
         companyPage.verifyingcompanyupdatedsuccessmessage();
     }
 
+    @Then("company should be deleted succesfully")
+    public void company_should_be_deleted(){
+        companyPage.verifyingcompanydeletesuccessmessage();
+    }
+
     @When("i click on Delete button")
     public void i_click_on_Delete_button(){
         companyPage.clickOnDeleteButton();

@@ -18,6 +18,8 @@ public class HomePage {
 
     private WebDriver webdriver;
 
+    private DriverHelper driverHelper;
+
     private CompanyDataDetails companyDataDetails;
 
     private By ngxLoader = By.xpath("//ngx-spinner/div");
@@ -41,12 +43,16 @@ public class HomePage {
     @FindBy(xpath = "(//h4)[3]")
     WebElement verifyingcompany;
 
+    @FindBy(partialLinkText = "Company")
+    WebElement companyLink;
+
     @FindBy(partialLinkText = "Manage Companies")
     WebElement managecompanieslink;
 
 
-    public HomePage(DriverHelper driverHelper, CompanyPage companyPage, CompanyDataDetails companyDataDetails){
+    public HomePage(DriverHelper driverHelper, CompanyDataDetails companyDataDetails){
         webdriver = driverHelper.getDriver();
+        this.driverHelper = driverHelper;
         PageFactory.initElements(driverHelper.getDriver(), this);
         this.companyDataDetails = companyDataDetails;
     }
@@ -96,7 +102,12 @@ public class HomePage {
         
     }
 
+    public void clickOnCompanymenu(){
+        companyLink.click();
+    }
+
     public void clickManagecompanieslinkabc(){
+        driverHelper.waitForVisible(managecompanieslink);
         managecompanieslink.click();
     }
 
