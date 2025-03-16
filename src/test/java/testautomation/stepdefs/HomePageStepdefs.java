@@ -19,4 +19,12 @@ public class HomePageStepdefs {
     public void verify_the_selected_company_should_be_loaded(){
 
     }
+    @When("i select the location {string} from navigation bar")
+    public void select_the_location_from_navigation_bar(String Locationname ){
+
+    }
+    @Then("verify the selected location should be loaded")
+    public void verify_the_selected_location_should_be_loaded(){
+
+    }
 }
