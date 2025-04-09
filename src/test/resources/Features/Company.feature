@@ -3,7 +3,7 @@ Feature: Tracrat Automation
 
     @companyCrud @smoke
     Scenario: create company
-        Given the user name is "ypatel" and the password is "Ypatel@1234"
+        Given the user name is "ypatal" and the password is "Ypatel@1234"
         When I click the login button
         Then the login should be successful
         When i select the company 'AMWAY' from navigation bar

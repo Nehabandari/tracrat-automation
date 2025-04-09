@@ -22,11 +22,9 @@ public class LoginPage {
 
         PageFactory.initElements(driverHelper.getDriver(), this);
     }
-
     public void enterDetails(String username, String password){
         userNameTextField.sendKeys(username);
         passwordTextField.sendKeys(password);
-
     }
 
     public void clickLoginButton(){

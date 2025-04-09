@@ -5,7 +5,7 @@ import io.cucumber.testng.CucumberOptions;
 
 @CucumberOptions(
         features = "src\\test\\resources\\Features",
-        tags = "@smoke",
+        tags = "@smoke1",
         glue = "tracratselenium\\stepdef",
         plugin = {
                 "html:target/Cucumber2/result.html"

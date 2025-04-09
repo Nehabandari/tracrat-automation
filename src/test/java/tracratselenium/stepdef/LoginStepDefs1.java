@@ -7,13 +7,13 @@ import tracratselenium.helpers.DriverHelper;
 import tracratselenium.page.HomePage;
 import tracratselenium.page.LoginPage;
 
-public class CucumberStepDefs {
+public class LoginStepDefs1 {
 
     LoginPage loginPage;
 
     HomePage homePage;
 
-    public CucumberStepDefs(DriverHelper driverHelper, LoginPage lp, HomePage hp){
+    public LoginStepDefs1(DriverHelper driverHelper, LoginPage lp, HomePage hp){
 
        loginPage = lp;
        homePage = hp;
@@ -24,9 +24,6 @@ public class CucumberStepDefs {
        loginPage.enterDetails(username, password);
 
     }
-
-
-
     @When("I click the login button")
     public void click_the_login_button(){
         loginPage.clickLoginButton();
