@@ -109,6 +109,7 @@ public class HomePage {
     public void clickManagecompanieslinkabc(){
         driverHelper.waitForVisible(managecompanieslink);
         managecompanieslink.click();
+    
     }
 
 

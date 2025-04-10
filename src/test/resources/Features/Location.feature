@@ -6,8 +6,8 @@ Feature: Tracrat Automation
     Given the user name is "tracrat_automation" and the password is "Tracrat@123"
     When I click the login button
     Then the login should be successful
-    #When i select the company 'AMWAY' from navigation bar
-    #Then verify the selected company should be loaded
+    When i select the company 'AMWAY' from navigation bar
+    Then verify the selected company should be loaded
     #When i select the location from  navigation bar
     #Then verify the selected location should be loaded
     #And i click on manage location
